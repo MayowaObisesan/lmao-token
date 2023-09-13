@@ -7,9 +7,8 @@ async function main() {
     console.log("WLMAO Token deployed to: ", wlmao.target);
 
     // Test Deposit functionality
-    const [signer] = await ethers.getSigners();
-    const wlmaoContract = await ethers.getContractAt("WLMAO", wlmao.target);
-    console.log(await wlmaoContract.balanceOf(signer.address));
+    const [signer, addr2] = await ethers.getSigners();
+    console.log(ethers.formatEther(await wlmao.balanceOf(signer.address)));
 }
 
 // We recommend this pattern to be able to use async/await everywhere
