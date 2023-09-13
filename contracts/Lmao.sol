@@ -2,7 +2,6 @@
 pragma solidity 0.8.19;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract LMAO is ERC20, Ownable {
@@ -21,8 +20,8 @@ contract LMAO is ERC20, Ownable {
     ) internal virtual override {
         uint tax = (amount * 8) / 100;
         uint afterTax = amount - tax;
-        super._transfer(from, to, afterTax);
-        super._transfer(from, msg.sender, tax);
+        super._transfer(from, to, afterTax); // transfer the afterTax to any address
+        super._transfer(from, msg.sender, tax); // transfer the tax to msg.sender
     }
 
     fallback() external payable {}
