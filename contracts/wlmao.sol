@@ -15,7 +15,7 @@ contract WLMAO is ERC20 {
         IERC20(LMAO_ADDRESS).transferFrom(msg.sender, address(this), _amount);
         // Mint only 92% of the token.
         uint taxedAmount = (_amount * 92) / 100;
-        _mint(msg.sender, taxedAmount);
+        // _mint(msg.sender, taxedAmount);
     }
 
     function withdraw(uint _amount) external {

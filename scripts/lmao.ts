@@ -6,12 +6,13 @@ async function main() {
 
     console.log("LMAO Token deployed to: ", lmao.target);
 
-    const [addr1, addr2] = await ethers.getSigners();
+    const [addr1, addr2, addr3] = await ethers.getSigners();
 
     console.log(ethers.formatEther(await lmao.balanceOf(addr1.address)));
     console.log(ethers.formatEther(await lmao.balanceOf(addr2.address)));
 
-    await lmao.transfer(addr2.address, ethers.parseEther("2"));
+    await lmao.transfer(addr2.address, ethers.parseEther("200"));
+    await lmao.transfer(addr1.address, ethers.parseEther("100"));
 
     console.log(ethers.formatEther(await lmao.balanceOf(addr1.address)));
     console.log(ethers.formatEther(await lmao.balanceOf(addr2.address)));
